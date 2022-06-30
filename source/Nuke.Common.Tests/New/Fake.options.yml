@@ -1,0 +1,78 @@
+name: Boolean
+type: bool
+format: --boolean {value}
+
+---
+
+name: Flag
+type: bool
+format: --flag
+
+---
+
+name: String
+type: string
+format: --string {value}
+
+---
+
+name: Integer
+type: int
+format: --integer {value}
+
+---
+
+name: Enumeration
+type: DotNetVerbosity
+format: --enumeration {value}
+
+---
+
+name: StringList
+type: list
+value: string
+format: --string-list {value}
+
+---
+
+name: IntegerList
+type: list
+value: int
+format: --integer-list {value}
+
+---
+
+name: EnumerationList
+type: list
+value: DotNetVerbosity
+format: --enumeration-list {value}
+
+---
+
+name: Dictionary
+type: dictionary
+key: string
+value: int
+format: /p:{key}={value}
+alternativeFormat: /property:{key}={value}
+
+---
+
+name: Lookup
+type: lookup
+key: string
+value: string
+format: --lookup {key}={value}
+
+---
+
+name: Nested
+type: FakeOptions
+format: --nested {value}
+
+---
+
+name: NestedList
+type: list
+value: FakeOptions
+format: --nested-list {value}

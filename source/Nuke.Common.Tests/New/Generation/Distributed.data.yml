@@ -1,0 +1,5 @@
+baseClass: OptionsBuilder
+additionalOptions:
+  - Additional
+namespaces:
+  - Serilog.Events

@@ -1,0 +1,10 @@
+name: Foobar
+description: |
+  Some description.
+officialUrl: https://google.com
+generateExtensions: true
+options:
+  - name: SomeOption
+    type: string
+    description: |
+      This is a description.

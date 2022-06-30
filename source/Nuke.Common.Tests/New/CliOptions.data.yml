@@ -1,0 +1,42 @@
+officialUrl: https://nuke.build/docs/common/cli-tools/
+description: |
+  Defines base options for all CLI tools.
+
+baseClass: OptionsBuilder
+generateExtensions: true
+namespaces:
+  - Serilog.Events
+
+options:
+  - name: ProcessToolPath
+    type: string
+    description: |
+      Defines the path of the tool to be invoked. In most cases, the tool path is automatically resolved from the PATH environment variable or a NuGet package.
+
+  - name: ProcessWorkingDirectory
+    description: |
+      Defines the working directory for the process.
+    type: string
+
+  - name: ProcessEnvironmentVariables
+    description: |
+      Defines the environment variables to be passed to the process. By default, the environment variables
+      of the current process are used.
+    type: dictionary
+    key: string
+    value: object
+
+  - name: ProcessExecutionTimeout
+    description: |
+      Defines the execution timeout of the invoked process.
+    type: int
+
+  - name: ProcessOutputLogging
+    description: |
+      Defines the log-level for standard output.
+    type: LogEventLevel?
+
+  - name: ProcessInvocationLogging
+    description: |
+      Defines the log-level for the process invocation.
+    type: LogEventLevel?

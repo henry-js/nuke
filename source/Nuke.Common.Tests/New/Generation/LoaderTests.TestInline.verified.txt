@@ -1,0 +1,17 @@
+﻿[
+  {
+    File: {ProjectDirectory}New/Generation/Inline.data.yml,
+    Name: Foobar,
+    Description: Some description.,
+    OfficialUrl: https://google.com,
+    GenerateClass: true,
+    GenerateExtensions: true,
+    Options: [
+      {
+        Name: SomeOption,
+        Type: string,
+        Description: This is a description.
+      }
+    ]
+  }
+]

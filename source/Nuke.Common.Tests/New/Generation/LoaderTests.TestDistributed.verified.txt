@@ -1,0 +1,25 @@
+﻿[
+  {
+    File: {ProjectDirectory}New/Generation/Distributed.data.yml,
+    Name: Distributed,
+    BaseClass: OptionsBuilder,
+    Namespaces: [
+      Serilog.Events
+    ],
+    GenerateClass: true,
+    GenerateExtensions: false,
+    AdditionalOptions: [
+      Additional
+    ],
+    Options: [
+      {
+        File: {ProjectDirectory}New/Generation/Distributed.options.yml,
+        Name: FirstOption
+      },
+      {
+        File: {ProjectDirectory}New/Generation/Additional.options.yml,
+        Name: SecondOption
+      }
+    ]
+  }
+]
