@@ -35,7 +35,6 @@
 
   <ItemGroup>
     <Compile Include="..\Nuke.Common\Constants.cs" LinkBase=".\Linked" />
-    <Compile Include="..\Nuke.Common\IO\Globbing.cs" LinkBase=".\Linked\IO" />
     <Compile Include="..\Nuke.Common\ProjectModel\*.cs" LinkBase=".\Linked\ProjectModel" />
     <Compile Include="..\Nuke.Utilities\Assert.cs" LinkBase=".\Linked" />
     <Compile Include="..\Nuke.Utilities\Collections\*.cs" LinkBase=".\Linked\Utilities" />
@@ -44,6 +43,7 @@
     <Compile Include="..\Nuke.Utilities\IO\*.cs" LinkBase=".\Linked\IO" />
     <Compile Include="..\Nuke.Utilities\Shims\CallerArgumentExpressionAttribute.cs" LinkBase=".\Linked" />
     <Compile Include="..\Nuke.Utilities\Text\*.cs" LinkBase=".\Linked\Utilities" />
+    <Compile Include="..\Nuke.Utilities.IO.Globbing\Globbing.cs" LinkBase=".\Linked\IO" />
 
     <Compile Remove="..\Nuke.Common\ProjectModel\SolutionAttribute.cs" LinkBase=".\Linked\ProjectModel" />
     <Compile Remove="..\Nuke.Common\ProjectModel\Project.*.cs" LinkBase=".\Linked\ProjectModel" />
