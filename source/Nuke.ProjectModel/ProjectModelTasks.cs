@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Microsoft.Build.Evaluation;
 using Microsoft.Build.Locator;
@@ -18,13 +19,9 @@ namespace Nuke.Common.ProjectModel
     [PublicAPI]
     public static class ProjectModelTasks
     {
-        static ProjectModelTasks()
-        {
-            Initialize();
-        }
-
         // TODO: Remove usages
         // https://docs.microsoft.com/en-us/visualstudio/msbuild/updating-an-existing-application?view=vs-2019#use-microsoftbuildlocator
+        [ModuleInitializer]
         public static void Initialize()
         {
             if (!MSBuildLocator.CanRegister)
