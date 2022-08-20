@@ -2,7 +2,6 @@
 // Distributed under the MIT License.
 // https://github.com/nuke-build/nuke/blob/master/LICENSE
 
-#if NETFRAMEWORK
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -17,7 +16,7 @@ namespace Nuke.Common.Utilities.Collections
     public static partial class DictionaryExtensions
     {
         [CanBeNull]
-        public static TValue GetValueOrDefault<TKey, TValue>(
+        internal static TValue GetValueOrDefault<TKey, TValue>(
             this IReadOnlyDictionary<TKey, TValue> dictionary,
             TKey key,
             TValue defaultValue = default)
@@ -26,4 +25,3 @@ namespace Nuke.Common.Utilities.Collections
         }
     }
 }
-#endif
