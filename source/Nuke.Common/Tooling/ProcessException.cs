@@ -9,6 +9,8 @@ using System.Runtime.Serialization;
 using System.Text;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
+using Serilog;
+using Serilog.Events;
 
 namespace Nuke.Common.Tooling
 {
@@ -30,7 +32,7 @@ namespace Nuke.Common.Tooling
                 messageBuilder.AppendLine("Error output:");
                 errorOutput.ForEach(x => messageBuilder.Append(indentation).AppendLine(x.Text));
             }
-            else if (Logger.LogLevel <= LogLevel.Trace)
+            else if (Log.IsEnabled(LogEventLevel.Verbose))
             {
                 messageBuilder.AppendLine("Standard output:");
                 process.Output.ForEach(x => messageBuilder.Append(indentation).AppendLine(x.Text));
