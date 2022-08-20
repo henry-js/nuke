@@ -13,18 +13,6 @@ namespace Nuke.Common.Tooling
     [PublicAPI]
     public static class ToolResolver
     {
-        [Obsolete($"Use {nameof(NuGetToolResolver)}")]
-        public static Tool GetPackageTool(string packageId, string packageExecutable, string version = null, string framework = null)
-        {
-            return NuGetToolResolver.GetPackageTool(packageId, packageExecutable, version, framework);
-        }
-
-        [Obsolete($"Use {nameof(GetTool)} with absolute path")]
-        public static Tool GetLocalTool(string absoluteOrRelativePath)
-        {
-            return GetTool(absoluteOrRelativePath);
-        }
-
         public static Tool GetTool(string path)
         {
             return new ToolExecutor(path).Execute;
