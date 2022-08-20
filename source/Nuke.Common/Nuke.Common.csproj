@@ -14,6 +14,7 @@
     <ProjectReference Include="..\Nuke.Utilities\Nuke.Utilities.csproj" />
     <ProjectReference Include="..\Nuke.Utilities.IO.Globbing\Nuke.Utilities.IO.Globbing.csproj" />
     <ProjectReference Include="..\Nuke.Utilities.Net\Nuke.Utilities.Net.csproj" />
+    <ProjectReference Include="..\Nuke.Utilities.Text.Json\Nuke.Utilities.Text.Json.csproj" />
   </ItemGroup>
 
   <ItemGroup>
