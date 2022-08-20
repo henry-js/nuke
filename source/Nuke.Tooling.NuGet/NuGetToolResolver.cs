@@ -33,17 +33,7 @@ namespace Nuke.Common.Tooling
             var packageDirectory = GetPackageDirectory(packageId.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries), version);
             var packageExecutables = packageExecutable.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
             var packageExecutablePaths = packageExecutables
-#if NETCORE
-                .SelectMany(x => Directory.GetFiles(packageDirectory,
-                    x,
-                    new EnumerationOptions
-                    {
-                        RecurseSubdirectories = true,
-                        MatchCasing = MatchCasing.CaseInsensitive,
-                    }))
-#else
                 .SelectMany(x => Directory.GetFiles(packageDirectory, x, SearchOption.AllDirectories))
-#endif
                 .ToList();
 
             Assert.NotEmpty(packageExecutablePaths,

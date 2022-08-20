@@ -25,6 +25,7 @@ namespace Nuke.Common.Tooling
     {
         private static readonly HttpClient s_client = new HttpClient();
 
+        // TODO: Move to Nuke.Tooling.Versions (along with npm) ?
         [ItemCanBeNull]
         public static async Task<string> GetLatestPackageVersion(string packageId, bool includePrereleases, bool includeUnlisted = false)
         {
