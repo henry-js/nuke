@@ -11,7 +11,7 @@ namespace Nuke.Common.Tools.PowerShell
     {
         internal static string GetToolPath()
         {
-            return ToolPathResolver.GetPathExecutable(EnvironmentInfo.IsWin ? "powershell" : "pwsh");
+            return ToolResolver.GetPathExecutable(EnvironmentInfo.IsWin ? "powershell" : "pwsh");
         }
     }
 

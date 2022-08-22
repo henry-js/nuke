@@ -28,8 +28,8 @@ namespace Nuke.Common.Tools.OctoVersion
         ///   Path to the OctoVersion executable.
         /// </summary>
         public static string OctoVersionPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("OCTOVERSION_EXE") ??
-            ToolPathResolver.GetPackageExecutable("OctoVersion.Tool", "OctoVersion.Tool.dll");
+            ToolResolver.TryGetEnvironmentExecutable("OCTOVERSION_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("OctoVersion.Tool", "OctoVersion.Tool.dll");
         public static Action<OutputType, string> OctoVersionLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>For more details, visit the <a href="https://github.com/OctopusDeploy/OctoVersion">official website</a>.</p>

@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.OpenCover
         ///   Path to the OpenCover executable.
         /// </summary>
         public static string OpenCoverPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("OPENCOVER_EXE") ??
-            ToolPathResolver.GetPackageExecutable("OpenCover", "OpenCover.Console.exe");
+            ToolResolver.TryGetEnvironmentExecutable("OPENCOVER_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("OpenCover", "OpenCover.Console.exe");
         public static Action<OutputType, string> OpenCoverLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>OpenCover is a code coverage tool for .NET 2 and above (Windows OSs only - no MONO), with support for 32 and 64 processes and covers both branch and sequence points.</p>

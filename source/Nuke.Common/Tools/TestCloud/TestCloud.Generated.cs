@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.TestCloud
         ///   Path to the TestCloud executable.
         /// </summary>
         public static string TestCloudPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("TESTCLOUD_EXE") ??
-            ToolPathResolver.GetPackageExecutable("Xamarin.UITest", "test-cloud.exe");
+            ToolResolver.TryGetEnvironmentExecutable("TESTCLOUD_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("Xamarin.UITest", "test-cloud.exe");
         public static Action<OutputType, string> TestCloudLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Test Cloud is a cloud based service consisting of thousands of physical mobile devices. Users upload their apps and tests to Test Cloud, which will install the apps on the devices and run the tests. When the tests are complete, Test Cloud, the results made available to users through an easy to use and informative web-based front end.</p>

@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.CoverallsNet
         ///   Path to the CoverallsNet executable.
         /// </summary>
         public static string CoverallsNetPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("COVERALLSNET_EXE") ??
-            ToolPathResolver.GetPackageExecutable("coveralls.net", "csmacnz.Coveralls.dll");
+            ToolResolver.TryGetEnvironmentExecutable("COVERALLSNET_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("coveralls.net", "csmacnz.Coveralls.dll");
         public static Action<OutputType, string> CoverallsNetLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Coveralls uploader for .Net Code coverage of your C# source code. Should work with any code files that get reported with the supported coverage tools, but the primary focus is CSharp.</p>

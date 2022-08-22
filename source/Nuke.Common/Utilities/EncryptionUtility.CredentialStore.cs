@@ -63,7 +63,7 @@ namespace Nuke.Common.Utilities
             }
         }
 
-        private static string Security => ToolPathResolver.GetPathExecutable("security");
+        private static string Security => ToolResolver.GetPathExecutable("security");
 
         public static string GetPassword(string profile)
         {

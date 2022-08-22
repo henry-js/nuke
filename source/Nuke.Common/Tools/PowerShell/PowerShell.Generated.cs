@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.PowerShell
         ///   Path to the PowerShell executable.
         /// </summary>
         public static string PowerShellPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("POWERSHELL_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("POWERSHELL_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> PowerShellLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

@@ -109,8 +109,8 @@ namespace Nuke.GlobalTool
                 new ProcessStartInfo
                 {
                     FileName = EnvironmentInfo.IsWin
-                        ? ToolPathResolver.GetPathExecutable("powershell")
-                        : ToolPathResolver.GetPathExecutable("bash"),
+                        ? ToolResolver.GetPathExecutable("powershell")
+                        : ToolResolver.GetPathExecutable("bash"),
                     Arguments = EnvironmentInfo.IsWin
                         ? $"-ExecutionPolicy ByPass -NoProfile -File {buildScript.DoubleQuoteIfNeeded()} {arguments}"
                         : $"{buildScript} {arguments}"

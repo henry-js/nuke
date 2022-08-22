@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.MinVer
         ///   Path to the MinVer executable.
         /// </summary>
         public static string MinVerPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("MINVER_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("MINVER_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> MinVerLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

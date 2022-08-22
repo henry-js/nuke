@@ -12,7 +12,7 @@ namespace Nuke.Common.Tools.MinVer
     {
         internal static string GetToolPath(string framework = null)
         {
-            return ToolPathResolver.GetPackageExecutable(
+            return NuGetToolResolver.GetPackageExecutable(
                 packageId: "minver-cli",
                 packageExecutable: "minver-cli.dll",
                 framework: framework);

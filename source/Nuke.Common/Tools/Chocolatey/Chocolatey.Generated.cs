@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.Chocolatey
         ///   Path to the Chocolatey executable.
         /// </summary>
         public static string ChocolateyPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("CHOCOLATEY_EXE") ??
-            ToolPathResolver.GetPathExecutable("choco");
+            ToolResolver.TryGetEnvironmentExecutable("CHOCOLATEY_EXE") ??
+            ToolResolver.GetPathExecutable("choco");
         public static Action<OutputType, string> ChocolateyLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Chocolatey has the largest online registry of Windows packages. Chocolatey packages encapsulate everything required to manage a particular piece of software into one deployment artifact by wrapping installers, executables, zips, and/or scripts into a compiled package file.</p>

@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.SignClient
         ///   Path to the SignClient executable.
         /// </summary>
         public static string SignClientPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("SIGNCLIENT_EXE") ??
-            ToolPathResolver.GetPackageExecutable("SignClient", "SignClient.exe");
+            ToolResolver.TryGetEnvironmentExecutable("SIGNCLIENT_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("SignClient", "SignClient.exe");
         public static Action<OutputType, string> SignClientLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Code Signing client for Authenticode, NuGet, VSIX, and more</p>

@@ -14,7 +14,7 @@ namespace Nuke.Common.Tools.CloudFoundry
     {
         public static string GetToolPath()
         {
-            return ToolPathResolver.GetPackageExecutable($"CloudFoundry.CommandLine.{CurrentOsRid}", IsWindows ? "cf.exe" : "cf");
+            return NuGetToolResolver.GetPackageExecutable($"CloudFoundry.CommandLine.{CurrentOsRid}", IsWindows ? "cf.exe" : "cf");
         }
 
         private static bool IsWindows => EnvironmentInfo.Platform == PlatformFamily.Windows;

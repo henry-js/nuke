@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.Netlify
         ///   Path to the Netlify executable.
         /// </summary>
         public static string NetlifyPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("NETLIFY_EXE") ??
-            ToolPathResolver.GetPathExecutable("npx");
+            ToolResolver.TryGetEnvironmentExecutable("NETLIFY_EXE") ??
+            ToolResolver.GetPathExecutable("npx");
         public static Action<OutputType, string> NetlifyLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Netlify’s command line interface (CLI) lets you configure <a href="https://docs.netlify.com/cli/get-started/#continuous-deployment">continuous deployment</a> straight from the command line. You can use Netlify CLI to <a href="https://docs.netlify.com/cli/get-started/#run-a-local-development-environment">run a local development server</a> that you can share with others, <a href="https://docs.netlify.com/cli/get-started/#run-builds-locally">run a local build and plugins</a>, and <a href="https://docs.netlify.com/cli/get-started/#manual-deploys">deploy your site</a>.</p>

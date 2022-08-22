@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.Boots
         ///   Path to the Boots executable.
         /// </summary>
         public static string BootsPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("BOOTS_EXE") ??
-            ToolPathResolver.GetPackageExecutable("Boots", "Boots.exe");
+            ToolResolver.TryGetEnvironmentExecutable("BOOTS_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("Boots", "Boots.exe");
         public static Action<OutputType, string> BootsLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>boots is a .NET global tool for <c>bootstrapping</c> <c>vsix</c> and <c>pkg</c> files.</p>

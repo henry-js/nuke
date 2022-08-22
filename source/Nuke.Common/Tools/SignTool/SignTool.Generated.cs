@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.SignTool
         ///   Path to the SignTool executable.
         /// </summary>
         public static string SignToolPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("SIGNTOOL_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("SIGNTOOL_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> SignToolLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

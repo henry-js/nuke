@@ -21,9 +21,7 @@ namespace Nuke.Common.Tooling
         }
         public override object GetValue(MemberInfo member, object instance)
         {
-            var name = _name ?? member.Name;
-            return ToolResolver.TryGetEnvironmentTool(name) ??
-                   ToolResolver.GetNpmTool(name);
+            return NpmToolResolver.GetNpmTool(_name ?? member.Name);
         }
     }
 }

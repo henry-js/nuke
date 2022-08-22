@@ -28,8 +28,8 @@ namespace Nuke.Common.Tools.Helm
         ///   Path to the Helm executable.
         /// </summary>
         public static string HelmPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("HELM_EXE") ??
-            ToolPathResolver.GetPathExecutable("helm");
+            ToolResolver.TryGetEnvironmentExecutable("HELM_EXE") ??
+            ToolResolver.GetPathExecutable("helm");
         public static Action<OutputType, string> HelmLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>

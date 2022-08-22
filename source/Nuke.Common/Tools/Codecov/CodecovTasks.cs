@@ -18,7 +18,7 @@ namespace Nuke.Common.Tools.Codecov
     {
         internal static string GetToolPath(string framework = null)
         {
-            return ToolPathResolver.GetPackageExecutable(
+            return NuGetToolResolver.GetPackageExecutable(
                 packageId: "Codecov.Tool",
                 packageExecutable: "codecov.dll",
                 framework: framework);

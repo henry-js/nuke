@@ -28,8 +28,8 @@ namespace Nuke.Common.Tools.Kubernetes
         ///   Path to the Kubernetes executable.
         /// </summary>
         public static string KubernetesPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("KUBERNETES_EXE") ??
-            ToolPathResolver.GetPathExecutable("kubectl");
+            ToolResolver.TryGetEnvironmentExecutable("KUBERNETES_EXE") ??
+            ToolResolver.GetPathExecutable("kubectl");
         public static Action<OutputType, string> KubernetesLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>For more details, visit the <a href="https://kubernetes.io/">official website</a>.</p>

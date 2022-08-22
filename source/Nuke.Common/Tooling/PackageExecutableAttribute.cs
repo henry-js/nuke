@@ -55,7 +55,7 @@ namespace Nuke.Common.Tooling
         public override object GetValue(MemberInfo member, object instance)
         {
             return ToolResolver.TryGetEnvironmentTool(member.Name) ??
-                   ToolResolver.GetPackageTool(_packageId, _packageExecutable, Version, Framework);
+                   NuGetToolResolver.GetPackageTool(_packageId, _packageExecutable, Version, Framework);
         }
     }
 }

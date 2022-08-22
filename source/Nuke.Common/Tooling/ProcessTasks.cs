@@ -37,7 +37,7 @@ namespace Nuke.Common.Tooling
         {
             // TODO: fallback to sh
             return StartProcess(
-                toolPath: ToolPathResolver.GetPathExecutable(EnvironmentInfo.IsWin ? "cmd" : "bash"),
+                toolPath: ToolResolver.GetPathExecutable(EnvironmentInfo.IsWin ? "cmd" : "bash"),
                 arguments: $"{(EnvironmentInfo.IsWin ? "/c" : "-c")} {command.DoubleQuote()}",
                 workingDirectory,
                 environmentVariables,
@@ -77,7 +77,7 @@ namespace Nuke.Common.Tooling
         {
             Assert.True(toolPath != null);
             if (!Path.IsPathRooted(toolPath) && !toolPath.Contains(Path.DirectorySeparatorChar))
-                toolPath = ToolPathResolver.GetPathExecutable(toolPath);
+                toolPath = ToolResolver.GetPathExecutable(toolPath);
 
             var toolPathOverride = GetToolPathOverride(toolPath);
             if (!string.IsNullOrEmpty(toolPathOverride))
@@ -111,16 +111,13 @@ namespace Nuke.Common.Tooling
         private static string GetToolPathOverride(string toolPath)
         {
             if (toolPath.EndsWithOrdinalIgnoreCase(".dll"))
-            {
-                return ToolPathResolver.TryGetEnvironmentExecutable("DOTNET_EXE") ??
-                       ToolPathResolver.GetPathExecutable("dotnet");
-            }
+                return ToolResolver.GetPathExecutable("dotnet");
 
 #if NETCORE
             if (EnvironmentInfo.IsUnix &&
                 toolPath.EndsWithOrdinalIgnoreCase(".exe") &&
                 !EnvironmentInfo.IsWsl)
-                return ToolPathResolver.GetPathExecutable("mono");
+                return ToolResolver.GetPathExecutable("mono");
 #endif
 
             return null;

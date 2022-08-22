@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.ReportGenerator
         ///   Path to the ReportGenerator executable.
         /// </summary>
         public static string ReportGeneratorPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("REPORTGENERATOR_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("REPORTGENERATOR_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> ReportGeneratorLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

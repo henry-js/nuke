@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.DotMemoryUnit
         ///   Path to the DotMemoryUnit executable.
         /// </summary>
         public static string DotMemoryUnitPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("DOTMEMORYUNIT_EXE") ??
-            ToolPathResolver.GetPackageExecutable("JetBrains.DotMemoryUnit", "dotMemoryUnit.exe");
+            ToolResolver.TryGetEnvironmentExecutable("DOTMEMORYUNIT_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("JetBrains.DotMemoryUnit", "dotMemoryUnit.exe");
         public static Action<OutputType, string> DotMemoryUnitLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>dotMemory Unit is a unit testing framework which allows you to write tests that check your code for all kinds of memory issues. You can now extend NUnit, MSTest or another .NET unit testing framework with the functionality of a memory profiler.<para/>Perfect fit for any workflow: integrated with Visual Studio, works with stand-alone unit test runners, Continuous Integration ready. Last but not least, dotMemory Unit is free.</p>

@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.MSBuild
         ///   Path to the MSBuild executable.
         /// </summary>
         public static string MSBuildPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("MSBUILD_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("MSBUILD_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> MSBuildLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

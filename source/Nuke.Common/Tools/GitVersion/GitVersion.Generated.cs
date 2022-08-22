@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.GitVersion
         ///   Path to the GitVersion executable.
         /// </summary>
         public static string GitVersionPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("GITVERSION_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("GITVERSION_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> GitVersionLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

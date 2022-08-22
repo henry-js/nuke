@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.CodeMetrics
         ///   Path to the CodeMetrics executable.
         /// </summary>
         public static string CodeMetricsPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("CODEMETRICS_EXE") ??
-            ToolPathResolver.GetPackageExecutable("Microsoft.CodeAnalysis.Metrics", "Metrics.exe");
+            ToolResolver.TryGetEnvironmentExecutable("CODEMETRICS_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("Microsoft.CodeAnalysis.Metrics", "Metrics.exe");
         public static Action<OutputType, string> CodeMetricsLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Code metrics is a set of software measures that provide developers better insight into the code they are developing. By taking advantage of code metrics, developers can understand which types and/or methods should be reworked or more thoroughly tested. Development teams can identify potential risks, understand the current state of a project, and track progress during software development.</p>

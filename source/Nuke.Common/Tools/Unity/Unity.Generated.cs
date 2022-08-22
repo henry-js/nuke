@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.Unity
         ///   Path to the Unity executable.
         /// </summary>
         public static string UnityPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("UNITY_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("UNITY_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> UnityLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.MSpec
         ///   Path to the MSpec executable.
         /// </summary>
         public static string MSpecPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("MSPEC_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("MSPEC_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> MSpecLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

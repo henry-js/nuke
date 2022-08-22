@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.CorFlags
         ///   Path to the CorFlags executable.
         /// </summary>
         public static string CorFlagsPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("CORFLAGS_EXE") ??
-            ToolPathResolver.GetPathExecutable("CorFlags.exe");
+            ToolResolver.TryGetEnvironmentExecutable("CORFLAGS_EXE") ??
+            ToolResolver.GetPathExecutable("CorFlags.exe");
         public static Action<OutputType, string> CorFlagsLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>The CorFlags Conversion tool allows you to configure the CorFlags section of the header of a portable executable image.</p>

@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.CloudFoundry
         ///   Path to the CloudFoundry executable.
         /// </summary>
         public static string CloudFoundryPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("CLOUDFOUNDRY_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("CLOUDFOUNDRY_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> CloudFoundryLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.DotCover
         ///   Path to the DotCover executable.
         /// </summary>
         public static string DotCoverPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("DOTCOVER_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("DOTCOVER_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> DotCoverLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

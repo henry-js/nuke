@@ -30,8 +30,8 @@ namespace Nuke.Common.Tools.Docker
         ///   Path to the Docker executable.
         /// </summary>
         public static string DockerPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("DOCKER_EXE") ??
-            ToolPathResolver.GetPathExecutable("docker");
+            ToolResolver.TryGetEnvironmentExecutable("DOCKER_EXE") ??
+            ToolResolver.GetPathExecutable("docker");
         public static Action<OutputType, string> DockerLogger { get; set; } = CustomLogger;
         /// <summary>
         ///   <p>Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.</p>

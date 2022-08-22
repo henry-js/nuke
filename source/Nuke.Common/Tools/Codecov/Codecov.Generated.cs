@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.Codecov
         ///   Path to the Codecov executable.
         /// </summary>
         public static string CodecovPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("CODECOV_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("CODECOV_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> CodecovLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

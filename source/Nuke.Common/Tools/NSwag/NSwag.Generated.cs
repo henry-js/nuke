@@ -30,7 +30,7 @@ namespace Nuke.Common.Tools.NSwag
         ///   Path to the NSwag executable.
         /// </summary>
         public static string NSwagPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("NSWAG_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("NSWAG_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> NSwagLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

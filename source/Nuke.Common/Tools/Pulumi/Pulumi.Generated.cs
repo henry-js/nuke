@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.Pulumi
         ///   Path to the Pulumi executable.
         /// </summary>
         public static string PulumiPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("PULUMI_EXE") ??
-            ToolPathResolver.GetPathExecutable("pulumi");
+            ToolResolver.TryGetEnvironmentExecutable("PULUMI_EXE") ??
+            ToolResolver.GetPathExecutable("pulumi");
         public static Action<OutputType, string> PulumiLogger { get; set; } = CustomLogger;
         /// <summary>
         ///   <p>Pulumi is an <a href="https://github.com/pulumi/pulumi">open source</a> infrastructure as code tool for creating, deploying and managing cloud infrastructure. Pulumi works with traditional infrastructure like VMs, networks, and databases, in addition to modern architectures, including containers, Kubernetes clusters, and serverless functions. Pulumi supports dozens of public, private, and hybrid cloud service providers.</p>

@@ -28,8 +28,8 @@ namespace Nuke.Common.Tools.DotNet
         ///   Path to the DotNet executable.
         /// </summary>
         public static string DotNetPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("DOTNET_EXE") ??
-            ToolPathResolver.GetPathExecutable("dotnet");
+            ToolResolver.TryGetEnvironmentExecutable("DOTNET_EXE") ??
+            ToolResolver.GetPathExecutable("dotnet");
         public static Action<OutputType, string> DotNetLogger { get; set; } = CustomLogger;
         /// <summary>
         ///   <p>For more details, visit the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/">official website</a>.</p>

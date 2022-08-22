@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.Xunit
         ///   Path to the Xunit executable.
         /// </summary>
         public static string XunitPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("XUNIT_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("XUNIT_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> XunitLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

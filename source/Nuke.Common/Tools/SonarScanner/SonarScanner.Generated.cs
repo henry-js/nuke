@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.SonarScanner
         ///   Path to the SonarScanner executable.
         /// </summary>
         public static string SonarScannerPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("SONARSCANNER_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("SONARSCANNER_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> SonarScannerLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

@@ -29,7 +29,7 @@ namespace Nuke.Common.Tools.Octopus
         ///   Path to the Octopus executable.
         /// </summary>
         public static string OctopusPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("OCTOPUS_EXE") ??
+            ToolResolver.TryGetEnvironmentExecutable("OCTOPUS_EXE") ??
             GetToolPath();
         public static Action<OutputType, string> OctopusLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>

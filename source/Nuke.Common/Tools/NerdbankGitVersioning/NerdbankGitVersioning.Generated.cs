@@ -28,8 +28,8 @@ namespace Nuke.Common.Tools.NerdbankGitVersioning
         ///   Path to the NerdbankGitVersioning executable.
         /// </summary>
         public static string NerdbankGitVersioningPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("NERDBANKGITVERSIONING_EXE") ??
-            ToolPathResolver.GetPackageExecutable("nbgv", "nbgv.dll");
+            ToolResolver.TryGetEnvironmentExecutable("NERDBANKGITVERSIONING_EXE") ??
+            NuGetToolResolver.GetPackageExecutable("nbgv", "nbgv.dll");
         public static Action<OutputType, string> NerdbankGitVersioningLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>For more details, visit the <a href="https://github.com/AArnott/Nerdbank.GitVersioning">official website</a>.</p>

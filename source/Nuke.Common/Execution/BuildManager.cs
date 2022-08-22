@@ -46,9 +46,9 @@ namespace Nuke.Common.Execution
                 build.ExecutableTargets = ExecutableTargetFactory.CreateAll(build, defaultTargetExpressions);
                 build.ExecuteExtension<IOnBuildCreated>(x => x.OnBuildCreated(build, build.ExecutableTargets));
 
-                ToolPathResolver.EmbeddedPackagesDirectory = build.EmbeddedPackagesDirectory;
-                ToolPathResolver.NuGetPackagesConfigFile = build.NuGetPackagesConfigFile;
-                ToolPathResolver.NuGetAssetsConfigFile = build.NuGetAssetsConfigFile;
+                NuGetToolResolver.EmbeddedPackagesDirectory = build.EmbeddedPackagesDirectory;
+                NuGetToolResolver.NuGetPackagesConfigFile = build.NuGetPackagesConfigFile;
+                NuGetToolResolver.NuGetAssetsConfigFile = build.NuGetAssetsConfigFile;
 
                 if (!build.NoLogo)
                     build.WriteLogo();

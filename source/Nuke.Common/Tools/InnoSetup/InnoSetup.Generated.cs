@@ -29,8 +29,8 @@ namespace Nuke.Common.Tools.InnoSetup
         ///   Path to the InnoSetup executable.
         /// </summary>
         public static string InnoSetupPath =>
-            ToolPathResolver.TryGetEnvironmentExecutable("INNOSETUP_EXE") ??
-            ToolPathResolver.GetPathExecutable("iscc");
+            ToolResolver.TryGetEnvironmentExecutable("INNOSETUP_EXE") ??
+            ToolResolver.GetPathExecutable("iscc");
         public static Action<OutputType, string> InnoSetupLogger { get; set; } = ProcessTasks.DefaultLogger;
         /// <summary>
         ///   <p>Inno Setup is a free installer for Windows programs by Jordan Russell and Martijn Laan. First introduced in 1997, Inno Setup today rivals and even surpasses many commercial installers in feature set and stability.</p>

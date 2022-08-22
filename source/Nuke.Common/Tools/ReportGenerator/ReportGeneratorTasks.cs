@@ -32,7 +32,7 @@ namespace Nuke.Common.Tools.ReportGenerator
     {
         internal static string GetToolPath(string framework = null)
         {
-            return ToolPathResolver.GetPackageExecutable(
+            return NuGetToolResolver.GetPackageExecutable(
                 packageId: "ReportGenerator",
                 packageExecutable: "ReportGenerator.dll|ReportGenerator.exe",
                 framework: framework);
