@@ -59,7 +59,7 @@ namespace Nuke.Common.ProjectModel
 
             if (!SuppressBuildProjectCheck)
             {
-                var buildProject = solution.AllProjects.SingleOrDefault(x => x.Directory.Equals(NukeBuild.BuildProjectDirectory));
+                var buildProject = solution.AllProjects.SingleOrDefault(x => x.Directory.Equals(Build.BuildProjectDirectory));
                 var buildProjectConfigurations = buildProject?.Configurations.Where(x => x.Key.Contains("Build")).ToList();
 
                 if (buildProject != null && buildProjectConfigurations.Any())
@@ -82,13 +82,13 @@ namespace Nuke.Common.ProjectModel
         private string GetSolutionFileFromParametersFile(MemberInfo member)
         {
             return _relativePath != null
-                ? PathConstruction.Combine(NukeBuild.RootDirectory, _relativePath)
+                ? PathConstruction.Combine(Build.RootDirectory, _relativePath)
                 : ParameterService.GetParameter<AbsolutePath>(member).NotNull($"No solution file defined for '{member.Name}'.");
         }
 
         private string TryGetSolutionFileFromNukeFile()
         {
-            var nukeFile = Path.Combine(NukeBuild.RootDirectory, Constants.NukeFileName);
+            var nukeFile = Path.Combine(Build.RootDirectory, Constants.NukeFileName);
             if (!File.Exists(nukeFile))
                 return null;
 
@@ -96,7 +96,7 @@ namespace Nuke.Common.ProjectModel
             Assert.True(solutionFileRelative != null && !solutionFileRelative.Contains(value: '\\'),
                 $"First line of {Constants.NukeFileName} must provide solution path using UNIX separators");
 
-            var solutionFile = Path.GetFullPath(Path.Combine(NukeBuild.RootDirectory, solutionFileRelative));
+            var solutionFile = Path.GetFullPath(Path.Combine(Build.RootDirectory, solutionFileRelative));
             Assert.FileExists(solutionFile, $"Solution file '{solutionFile}' provided via {Constants.NukeFileName} does not exist");
 
             return (AbsolutePath) solutionFile;

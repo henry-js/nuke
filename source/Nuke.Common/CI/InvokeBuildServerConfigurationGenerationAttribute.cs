@@ -17,26 +17,26 @@ namespace Nuke.Common.CI
     public class InvokeBuildServerConfigurationGenerationAttribute
         : BuildServerConfigurationGenerationAttributeBase, IOnBuildCreated
     {
-        public void OnBuildCreated(NukeBuild build, IReadOnlyCollection<ExecutableTarget> executableTargets)
+        public void OnBuildCreated(IReadOnlyCollection<ExecutableTarget> executableTargets)
         {
-            if (NukeBuild.IsServerBuild || NukeBuild.IsInterceptorExecution)
+            if (Build.IsServerBuild || Build.IsInterceptorExecution)
                 return;
 
-            var hasConfigurationChanged = GetGenerators(build)
+            var hasConfigurationChanged = GetGenerators(Build)
                 .Where(x => x.AutoGenerate)
                 .AsParallel()
-                .Select(x => HasConfigurationChanged(x, build)).ToList();
+                .Select(HasConfigurationChanged).ToList();
             if (hasConfigurationChanged.All(x => !x))
                 return;
 
-            if (build.Help)
+            if (Build.Help)
                 return;
 
             Host.Information("Press any key to continue ...");
             Console.ReadKey();
         }
 
-        private bool HasConfigurationChanged(IConfigurationGenerator generator, NukeBuild build)
+        private bool HasConfigurationChanged(IConfigurationGenerator generator)
         {
             var generatedFiles = generator.GeneratedFiles.ToList();
             generatedFiles.ForEach(x => x.Parent.CreateDirectory());
@@ -46,7 +46,7 @@ namespace Nuke.Common.CI
                 .ToDictionary(x => x, x => x.GetFileHash());
 
             ProcessTasks.StartProcess(
-                    NukeBuild.BuildAssemblyFile,
+                    Build.BuildAssemblyFile,
                     $"--{ConfigurationParameterName} {generator.Id} --host {generator.HostName}",
                     logInvocation: false,
                     logOutput: false)
@@ -54,12 +54,12 @@ namespace Nuke.Common.CI
 
             var changedFiles = generatedFiles
                 .Where(x => x.GetFileHash() != previousHashes.GetValueOrDefault(x))
-                .Select(x => NukeBuild.RootDirectory.GetRelativePathTo(x)).ToList();
+                .Select(x => Build.RootDirectory.GetRelativePathTo(x)).ToList();
 
             if (changedFiles.Count == 0)
                 return false;
 
-            Telemetry.ConfigurationGenerated(generator.HostType, generator.Id, build);
+            Telemetry.ConfigurationGenerated(generator.HostType, generator.Id, Build);
             // TODO: multi-line logging
             Log.Warning("Configuration files for {Configuration} have changed.", generator.DisplayName);
             changedFiles.ForEach(x => Log.Verbose("Updated {File}", x));

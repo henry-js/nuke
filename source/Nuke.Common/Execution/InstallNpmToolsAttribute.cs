@@ -15,19 +15,21 @@ namespace Nuke.Common.Execution
     [PublicAPI]
     public class InstallNpmToolsAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
     {
-        public void OnBuildInitialized(NukeBuild build, IReadOnlyCollection<ExecutableTarget> executableTargets, IReadOnlyCollection<ExecutableTarget> executionPlan)
+        public void OnBuildInitialized(
+            IReadOnlyCollection<ExecutableTarget> executableTargets,
+            IReadOnlyCollection<ExecutableTarget> executionPlan)
         {
-            if (NukeBuild.BuildProjectFile == null)
+            if (Build.BuildProjectFile == null)
                 return;
 
-            var packageJsonFile = NukeBuild.BuildProjectDirectory / "package.json";
+            var packageJsonFile = Build.BuildProjectDirectory / "package.json";
             if (!packageJsonFile.Exists())
                 return;
 
             Log.Information("Installing npm tools...");
             var npm = ToolResolver.GetPathTool("npm");
             // Use NPM_CONFIG_PREFIX environment variable instead?
-            npm.Invoke($"install", workingDirectory: packageJsonFile.Parent, logInvocation: false, logOutput: false);
+            npm.Invoke("install", workingDirectory: packageJsonFile.Parent, logInvocation: false, logOutput: false);
         }
     }
 }
