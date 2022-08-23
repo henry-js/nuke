@@ -4,6 +4,7 @@
 
 using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Nuke.Build.Shared")]
 [assembly: InternalsVisibleTo("Nuke.Common")]
 [assembly: InternalsVisibleTo("Nuke.Common.Tests")]
 [assembly: InternalsVisibleTo("Nuke.SolutionModel")]

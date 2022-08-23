@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Nuke.Build.Shared\Nuke.Build.Shared.csproj" />
     <ProjectReference Include="..\Nuke.ProjectModel\Nuke.ProjectModel.csproj" />
   </ItemGroup>
 

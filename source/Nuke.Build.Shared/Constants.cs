@@ -43,7 +43,6 @@ namespace Nuke.Common
         {
             var rootDirectory = new DirectoryInfo(startDirectory)
                 .DescendantsAndSelf(x => x.Parent)
-                .WhereNotNull()
                 .FirstOrDefault(x => x.GetDirectories(NukeDirectoryName).Any() ||
                                      includeLegacy && x.GetFiles(NukeFileName).Any())
                 ?.FullName;
@@ -119,7 +118,7 @@ namespace Nuke.Common
                 .Select(x => x.TrimStart(ParametersFilePrefix).TrimStart("."));
         }
 
-        internal static string GetCredentialStoreName(AbsolutePath rootDirectory, [CanBeNull] string profile)
+        internal static string GetCredentialStoreName(string rootDirectory, [CanBeNull] string profile)
         {
             return $"NUKE: {rootDirectory} ({profile ?? DefaultProfileName})";
         }

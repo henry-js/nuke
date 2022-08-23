@@ -34,7 +34,7 @@
   </Target>
 
   <ItemGroup>
-    <Compile Include="..\Nuke.Common\Constants.cs" LinkBase=".\Linked" />
+    <Compile Include="..\Nuke.Build.Shared\Constants.cs" LinkBase=".\Linked" />
     <Compile Include="..\Nuke.SolutionModel\*.cs" LinkBase=".\Linked\SolutionModel" />
     <Compile Include="..\Nuke.Utilities\Assert.cs" LinkBase=".\Linked" />
     <Compile Include="..\Nuke.Utilities\Collections\*.cs" LinkBase=".\Linked\Utilities" />
