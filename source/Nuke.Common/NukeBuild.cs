@@ -57,6 +57,7 @@ namespace Nuke.Common
     // [SaveBuildProfile(Priority = 30)]
     // [LoadBuildProfiles(Priority = 25)]
     // After logo
+    [HandlePlanRequests(Priority = 10)]
     [HandleHelpRequests(Priority = 5)]
     [Telemetry]
     [HandleVisualStudioDebugging]
