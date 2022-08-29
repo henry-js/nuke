@@ -13,6 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Nuke.Utilities\Nuke.Utilities.csproj" />
     <ProjectReference Include="..\Nuke.Utilities.IO.Globbing\Nuke.Utilities.IO.Globbing.csproj" />
+    <ProjectReference Include="..\Nuke.Utilities.Net\Nuke.Utilities.Net.csproj" />
   </ItemGroup>
 
   <ItemGroup>
