@@ -109,7 +109,7 @@ namespace Nuke.Common.Execution
         {
             var globalJsonFile = NukeBuild.RootDirectory / "global.json";
             var jobject = File.Exists(globalJsonFile)
-                ? SerializationTasks.JsonDeserializeFromFile<JObject>(globalJsonFile)
+                ? globalJsonFile.ReadJson()
                 : new JObject();
             return jobject["sdk"]?["version"]?.Value<string>().Substring(startIndex: 0, length: 5);
         }

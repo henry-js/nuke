@@ -45,9 +45,9 @@ namespace Nuke.Common.Git
         /// <summary>
         /// Obtains information from a local git repository. Auto-injection can be utilized via <see cref="GitRepositoryAttribute"/>.
         /// </summary>
-        public static GitRepository FromLocalDirectory(string directory)
+        public static GitRepository FromLocalDirectory(AbsolutePath directory)
         {
-            var rootDirectory = FileSystemTasks.FindParentDirectory(directory, x => x.GetDirectories(".git").Any());
+            var rootDirectory = directory.FindParentOrSelf(x => x.ContainsDirectory(".git"));
             var gitDirectory = Path.Combine(rootDirectory.NotNull($"No parent Git directory for '{directory}'"), ".git");
 
             var head = GetHead(gitDirectory);
@@ -123,12 +123,12 @@ namespace Nuke.Common.Git
             return (Host.Instance as IBuildServer)?.Commit;
         }
 
-        private static IReadOnlyCollection<string> GetTagsFromCommit(string gitDirectory, string commit)
+        private static IReadOnlyCollection<string> GetTagsFromCommit(AbsolutePath gitDirectory, string commit)
         {
             if (commit == null)
                 return new string[0];
 
-            var packedRefsFile = (AbsolutePath) gitDirectory / "packed-refs";
+            var packedRefsFile = gitDirectory / "packed-refs";
             var packedTags = File.Exists(packedRefsFile)
                 ? File.ReadAllLines(packedRefsFile)
                     .Where(x => !x.StartsWith("#") && !x.StartsWith("^"))
@@ -138,7 +138,7 @@ namespace Nuke.Common.Git
                     .Select(x => x.Reference.TrimStart("refs/tags/"))
                 : new string[0];
 
-            var tagsDirectory = (AbsolutePath) gitDirectory / "refs" / "tags";
+            var tagsDirectory = gitDirectory / "refs" / "tags";
             var localTags = tagsDirectory
                 .GlobFiles("**/*")
                 .Where(x => File.ReadAllText(x).Trim() == commit)

@@ -142,7 +142,7 @@ namespace Nuke.Common.Execution
                 return;
 
             NukeBuild.TemporaryDirectory.GlobFiles("build.*.log").OrderByDescending(x => x.ToString()).Skip(5)
-                .ForEach(FileSystemTasks.DeleteFile);
+                .ForEach(x => x.DeleteFile());
 
             var buildLogFile = NukeBuild.TemporaryDirectory / "build.log";
             if (File.Exists(buildLogFile))

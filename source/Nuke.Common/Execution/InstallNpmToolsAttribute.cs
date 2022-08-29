@@ -21,7 +21,7 @@ namespace Nuke.Common.Execution
                 return;
 
             var packageJsonFile = NukeBuild.BuildProjectDirectory / "package.json";
-            if (!packageJsonFile.FileExists())
+            if (!packageJsonFile.Exists())
                 return;
 
             Log.Information("Installing npm tools...");

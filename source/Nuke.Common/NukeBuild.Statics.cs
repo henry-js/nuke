@@ -21,8 +21,7 @@ namespace Nuke.Common
         static NukeBuild()
         {
             RootDirectory = GetRootDirectory();
-            TemporaryDirectory = GetTemporaryDirectory(RootDirectory);
-            FileSystemTasks.EnsureExistingDirectory(TemporaryDirectory);
+            TemporaryDirectory = GetTemporaryDirectory(RootDirectory).CreateDirectory();
 
             BuildAssemblyFile = GetBuildAssemblyFile();
             BuildAssemblyDirectory = BuildAssemblyFile?.Parent;
@@ -124,7 +123,7 @@ namespace Nuke.Common
             var invokedLocation = Environment.GetCommandLineArgs().First();
             Assert.True(assemblyLocation == string.Empty || assemblyLocation == invokedLocation);
 
-            return (AbsolutePath) (assemblyLocation != string.Empty ? assemblyLocation : invokedLocation);
+            return assemblyLocation != string.Empty ? assemblyLocation : invokedLocation;
         }
 
         [CanBeNull]
@@ -133,7 +132,7 @@ namespace Nuke.Common
             if (buildAssemblyDirectory == null)
                 return null;
 
-            return (AbsolutePath) new DirectoryInfo(buildAssemblyDirectory)
+            return new DirectoryInfo(buildAssemblyDirectory)
                 .DescendantsAndSelf(x => x.Parent)
                 .Select(x => x.GetFiles("*.csproj", SearchOption.TopDirectoryOnly)
                     .SingleOrDefaultOrError($"Found multiple project files in '{x}'."))

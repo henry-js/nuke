@@ -90,11 +90,11 @@ namespace Nuke.GlobalTool
 
             var globalJsonFile = rootDirectory / "global.json";
             var jobject = File.Exists(globalJsonFile)
-                ? SerializationTasks.JsonDeserializeFromFile<JObject>(globalJsonFile)
+                ? globalJsonFile.ReadJson()
                 : new JObject();
             jobject["sdk"] ??= new JObject();
             jobject["sdk"].NotNull()["version"] = latestInstalledSdk;
-            SerializationTasks.JsonSerializeToFile(jobject, globalJsonFile);
+            globalJsonFile.WriteJson(jobject);
         }
     }
 }

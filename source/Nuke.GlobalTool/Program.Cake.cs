@@ -64,11 +64,11 @@ namespace Nuke.GlobalTool
                     .GetValueOrDefault(BUILD_PROJECT_FILE, defaultValue: null)
                 : null;
 
-            string GetOutputDirectory(string file)
+            AbsolutePath GetOutputDirectory(AbsolutePath file)
                 => Path.GetDirectoryName(buildProjectFile ?? file);
 
-            string GetOutputFile(string file)
-                => (AbsolutePath) GetOutputDirectory(file) / Path.GetFileNameWithoutExtension(file).Capitalize() + ".cs";
+            AbsolutePath GetOutputFile(AbsolutePath file)
+                => GetOutputDirectory(file) / Path.GetFileNameWithoutExtension(file).Capitalize() + ".cs";
 
             GetCakeFiles().ForEach(x => File.WriteAllText(path: GetOutputFile(x), contents: GetCakeConvertedContent(File.ReadAllText(x))));
 
@@ -89,7 +89,7 @@ namespace Nuke.GlobalTool
             cakeFiles.ForEach(x => Host.Debug($"  - {x}"));
 
             if (PromptForConfirmation("Delete?"))
-                cakeFiles.ForEach(FileSystemTasks.DeleteFile);
+                cakeFiles.ForEach(x => x.DeleteFile());
 
             return 0;
         }

@@ -4,6 +4,7 @@
 
 using System.IO;
 using System.Linq;
+using System.Text;
 using JetBrains.Annotations;
 using Nuke.Common;
 using Nuke.Common.IO;
@@ -14,14 +15,14 @@ using static Nuke.Common.Tools.Git.GitTasks;
 
 partial class Build
 {
-    string ContributorsFile => RootDirectory / "CONTRIBUTORS.md";
-    string ContributorsCacheFile => TemporaryDirectory / "contributors.dat";
+    AbsolutePath ContributorsFile => RootDirectory / "CONTRIBUTORS.md";
+    AbsolutePath ContributorsCacheFile => TemporaryDirectory / "contributors.dat";
 
     [UsedImplicitly]
     Target UpdateContributors => _ => _
         .Executes(() =>
         {
-            var previousContributors = File.Exists(ContributorsCacheFile) ? ReadAllLines(ContributorsCacheFile) : new string[0];
+            var previousContributors = File.Exists(ContributorsCacheFile) ? ContributorsCacheFile.ReadAllLines() : new string[0];
 
             var repositoryDirectories = new[] { RootDirectory / ".git" }
                 .Concat(ExternalRepositoriesDirectory.GlobDirectories("*/.git"));
@@ -39,7 +40,7 @@ partial class Build
             {
                 var content = (File.Exists(ContributorsFile) ? File.ReadAllLines(ContributorsFile) : new string[0])
                     .Concat($"- {newContributor.Name}").OrderBy(x => x);
-                WriteAllLines(ContributorsFile, content);
+                ContributorsFile.WriteAllLines(content, Encoding.Default);
                 Git($"add {ContributorsFile}");
 
                 var message = $"Add {newContributor.Name} as contributor".DoubleQuote();
@@ -47,6 +48,6 @@ partial class Build
                 Git($"commit -m {message} --author {author}");
             }
 
-            WriteAllLines(ContributorsCacheFile, contributors.Select(x => x.Email).ToList());
+            ContributorsCacheFile.WriteAllLines(contributors.Select(x => x.Email).ToList());
         });
 }

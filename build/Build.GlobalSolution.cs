@@ -31,7 +31,7 @@ partial class Build
         => ExternalRepositoriesDirectory.GlobFiles("*/*.sln").Select(x => ParseSolution(x));
 
     IEnumerable<GitRepository> ExternalRepositories
-        => YamlDeserializeFromFile<string[]>(ExternalRepositoriesFile).Select(x => GitRepository.FromUrl(x));
+        => ExternalRepositoriesFile.ReadYaml<string[]>().Select(x => GitRepository.FromUrl(x));
 
     Target CheckoutExternalRepositories => _ => _
         .Executes(() =>
@@ -57,7 +57,7 @@ partial class Build
         .Executes(() =>
         {
             var global = CreateSolution(
-                fileName: GlobalSolution,
+                solutionFile: GlobalSolution,
                 solutions: new[] { Solution }.Concat(ExternalSolutions),
                 folderNameProvider: x => x == Solution ? null : x.Name);
             global.Save();
