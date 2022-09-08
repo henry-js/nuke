@@ -10,11 +10,17 @@ using Nuke.Common.Utilities;
 
 namespace Nuke.Common
 {
+    /// <summary>
+    /// Provides access to environment relevant information.
+    /// </summary>
     public static partial class EnvironmentInfo
     {
         public static string NewLine => Environment.NewLine;
         public static string MachineName => Environment.MachineName;
 
+        /// <summary>
+        /// Returns the working directory for the current process.
+        /// </summary>
         public static AbsolutePath WorkingDirectory
         {
 #if NETCORE
@@ -26,6 +32,9 @@ namespace Nuke.Common
 #endif
         }
 
+        /// <summary>
+        /// Switches to a new working directory. The previous working directory is restored once the <see cref="IDisposable"/> is disposed.
+        /// </summary>
         public static IDisposable SwitchWorkingDirectory(string workingDirectory)
         {
             var previousWorkingDirectory = WorkingDirectory;

@@ -13,6 +13,10 @@ namespace Nuke.Common.IO
 {
     public static partial class AbsolutePathExtensions
     {
+        /// <summary>
+        /// Indicates whether a file or directory exists. The argument expression should indicate which type is expected, i.e.,
+        /// <c>configFile</c>, <c>outputFolder</c>, or <c>artifactsDirectory</c>.
+        /// </summary>
         [Pure]
         public static bool Exists(this AbsolutePath path, [CallerArgumentExpression("path")] string expression = null)
         {
@@ -30,12 +34,18 @@ namespace Nuke.Common.IO
             return File.Exists(path);
         }
 
+        /// <summary>
+        /// Indicates whether the directory exists.
+        /// </summary>
         [Pure]
         public static bool DirectoryExists(this AbsolutePath path)
         {
             return Directory.Exists(path);
         }
 
+        /// <summary>
+        /// Indicates whether the directory contains a file (<c>*</c> as wildcard) using <see cref="SearchOption.TopDirectoryOnly"/>.
+        /// </summary>
         [Pure]
         public static bool ContainsFile(this AbsolutePath path, string pattern, SearchOption options = SearchOption.TopDirectoryOnly)
         {
@@ -43,6 +53,9 @@ namespace Nuke.Common.IO
             return path.ToDirectoryInfo().GetFiles(pattern, options).Any();
         }
 
+        /// <summary>
+        /// Indicates whether the directory contains a directory (<c>*</c> as wildcard) using <see cref="SearchOption.TopDirectoryOnly"/>.
+        /// </summary>
         [Pure]
         public static bool ContainsDirectory(this AbsolutePath path, string pattern, SearchOption options = SearchOption.TopDirectoryOnly)
         {

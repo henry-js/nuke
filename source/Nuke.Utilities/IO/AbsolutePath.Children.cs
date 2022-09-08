@@ -10,6 +10,9 @@ namespace Nuke.Common.IO
 {
     partial class AbsolutePathExtensions
     {
+        /// <summary>
+        /// Returns all files below the directory.
+        /// </summary>
         public static IEnumerable<AbsolutePath> GetFiles(
             this AbsolutePath path,
             string pattern = "*",
@@ -18,6 +21,9 @@ namespace Nuke.Common.IO
             return Directory.GetFiles(path, pattern, options).Select(AbsolutePath.Create);
         }
 
+        /// <summary>
+        /// Returns all directories below the directory.
+        /// </summary>
         public static IEnumerable<AbsolutePath> GetDirectories(
             this AbsolutePath path,
             string pattern = "*",
