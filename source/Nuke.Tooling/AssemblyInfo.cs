@@ -4,5 +4,6 @@
 
 using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Nuke.Build")]
 [assembly: InternalsVisibleTo("Nuke.Common")]
 [assembly: InternalsVisibleTo("Nuke.Tooling.NuGet")]

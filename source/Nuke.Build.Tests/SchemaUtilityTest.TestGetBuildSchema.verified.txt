@@ -21,19 +21,8 @@
           "type": "string",
           "description": "Host for execution. Default is 'automatic'",
           "enum": [
-            "AppVeyor",
-            "AzurePipelines",
-            "Bamboo",
-            "Bitbucket",
-            "Bitrise",
-            "GitHubActions",
-            "GitLab",
-            "Jenkins",
             "Rider",
-            "SpaceAutomation",
-            "TeamCity",
             "Terminal",
-            "TravisCI",
             "VisualStudio",
             "VSCode"
           ]

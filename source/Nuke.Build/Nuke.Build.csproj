@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Execution\execution-plan.html" />
+    <EmbeddedResource Include="Execution\Extensions\execution-plan.html" />
   </ItemGroup>
 
 </Project>

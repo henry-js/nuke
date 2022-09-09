@@ -7,11 +7,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Nuke.Common.Execution;
 using Nuke.Common.IO;
 using Nuke.Common.Utilities;
 using Nuke.Common.Utilities.Collections;
 
-namespace Nuke.Common.Execution
+namespace Nuke.Build.Execution.Extensions
 {
     internal class HandlePlanRequestsAttribute : BuildExtensionAttributeBase, IOnBuildInitialized
     {

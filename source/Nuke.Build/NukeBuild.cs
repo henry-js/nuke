@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using JetBrains.Annotations;
+using Nuke.Build.Execution.Extensions;
 using Nuke.Common.CI;
 using Nuke.Common.Execution;
 using Nuke.Common.Tooling;
