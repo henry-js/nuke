@@ -11,8 +11,7 @@ using Serilog;
 
 namespace Nuke.Common.Execution
 {
-    [PublicAPI]
-    public class HandleReSharperSurrogateArgumentsAttribute : BuildExtensionAttributeBase, IOnBuildCreated
+    internal class HandleReSharperSurrogateArgumentsAttribute : BuildExtensionAttributeBase, IOnBuildCreated
     {
         private const string SurrogateFileName = "nuke.tmp";
 
