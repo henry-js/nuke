@@ -13,6 +13,7 @@ using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 using Serilog;
+#pragma warning disable CA2255
 
 namespace Nuke.Common.ProjectModel
 {

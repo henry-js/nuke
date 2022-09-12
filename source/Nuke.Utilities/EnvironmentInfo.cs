@@ -23,13 +23,8 @@ namespace Nuke.Common
         /// </summary>
         public static AbsolutePath WorkingDirectory
         {
-#if NETCORE
-            get => (AbsolutePath) Directory.GetCurrentDirectory();
-            set => Directory.SetCurrentDirectory(value);
-#else
             get => Environment.CurrentDirectory;
             set => Environment.CurrentDirectory = value;
-#endif
         }
 
         /// <summary>

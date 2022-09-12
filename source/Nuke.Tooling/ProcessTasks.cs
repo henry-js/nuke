@@ -113,12 +113,10 @@ namespace Nuke.Common.Tooling
             if (toolPath.EndsWithOrdinalIgnoreCase(".dll"))
                 return ToolResolver.GetPathExecutable("dotnet");
 
-#if NETCORE
             if (EnvironmentInfo.IsUnix &&
                 toolPath.EndsWithOrdinalIgnoreCase(".exe") &&
                 !EnvironmentInfo.IsWsl)
                 return ToolResolver.GetPathExecutable("mono");
-#endif
 
             return null;
         }
