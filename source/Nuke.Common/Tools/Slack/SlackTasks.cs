@@ -3,6 +3,7 @@
 // https://github.com/nuke-build/nuke/blob/master/LICENSE
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Net;
@@ -17,8 +18,7 @@ using Nuke.Common.IO;
 using Nuke.Common.Tooling;
 using Nuke.Common.Utilities;
 #if NETCORE
-using System.Collections.Specialized;
-using System.Web;
+using Nuke.Common.Utilities.Net;
 #endif
 
 namespace Nuke.Common.Tools.Slack
@@ -36,29 +36,14 @@ namespace Nuke.Common.Tools.Slack
         {
             var message = configurator(new SlackMessage());
             var payload = JsonConvert.SerializeObject(message);
-            var data = new NameValueCollection { ["payload"] = payload };
 
-            using var client = new WebClient();
+            using var client = new HttpClient();
 
-            client.Headers["Content-Type"] = "application/x-www-form-urlencoded";
+            var response = await client.CreateRequest(HttpMethod.Post, webhook)
+                .WithFormUrlEncodedContent(new Dictionary<string, string> { ["payload"] = payload })
+                .GetResponseAsync();
 
-            var stringBuilder = new StringBuilder();
-            var str = string.Empty;
-            foreach (var key in data.AllKeys)
-            {
-                stringBuilder
-                    .Append(str)
-                    .Append(HttpUtility.UrlEncode(key))
-                    .Append(value: '=')
-                    .Append(HttpUtility.UrlEncode(data[key]));
-
-                str = "&";
-            }
-
-            var bytes = Encoding.ASCII.GetBytes(stringBuilder.ToString());
-
-            var response = await client.UploadDataTaskAsync(webhook, "POST", bytes);
-            var responseText = Encoding.UTF8.GetString(response);
+            var responseText = await response.GetBodyAsync();
             Assert.True(responseText == "ok");
         }
 #endif
