@@ -29,6 +29,11 @@
             "format": "--default-pre-release-phase {value}"
           },
           {
+            "name": "DefaultPreReleaseIdentifiers",
+            "type": "string",
+            "format": "--default-pre-release-identifiers {value}"
+          },
+          {
             "name": "MinimumMajorMinor",
             "type": "string",
             "format": "--minimum-major-minor {value}"
